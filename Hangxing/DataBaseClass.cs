@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Hangxing
 {
+    ///看看能不能提交
     /// <summary>
     /// 定义数据库操作类,用于查询和操作本地数据信息
     /// 示例：DataBase newDataBase3 = new DataBase("newDataBase3", "sa", "12345");
