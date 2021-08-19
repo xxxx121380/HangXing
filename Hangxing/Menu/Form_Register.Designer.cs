@@ -33,8 +33,8 @@ namespace Hangxing
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
-            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
+            this.edtPassword2 = new Sunny.UI.UITextBox();
+            this.btnRegister = new Sunny.UI.UISymbolButton();
             this.btnCancel = new Sunny.UI.UISymbolButton();
             this.edtPassword = new Sunny.UI.UITextBox();
             this.edtUser = new Sunny.UI.UITextBox();
@@ -69,8 +69,8 @@ namespace Hangxing
             // uiPanel1
             // 
             this.uiPanel1.BackColor = System.Drawing.Color.White;
-            this.uiPanel1.Controls.Add(this.uiTextBox1);
-            this.uiPanel1.Controls.Add(this.uiSymbolButton1);
+            this.uiPanel1.Controls.Add(this.edtPassword2);
+            this.uiPanel1.Controls.Add(this.btnRegister);
             this.uiPanel1.Controls.Add(this.btnCancel);
             this.uiPanel1.Controls.Add(this.edtPassword);
             this.uiPanel1.Controls.Add(this.edtUser);
@@ -85,50 +85,51 @@ namespace Hangxing
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // uiTextBox1
+            // edtPassword2
             // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.EnterAsTab = true;
-            this.uiTextBox1.FillColor = System.Drawing.Color.White;
-            this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(12, 141);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.Maximum = 2147483647D;
-            this.uiTextBox1.Minimum = -2147483648D;
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox1.PasswordChar = '*';
-            this.uiTextBox1.Size = new System.Drawing.Size(182, 29);
-            this.uiTextBox1.Symbol = 61475;
-            this.uiTextBox1.SymbolSize = 22;
-            this.uiTextBox1.TabIndex = 2;
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Watermark = "请确认密码";
+            this.edtPassword2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.edtPassword2.EnterAsTab = true;
+            this.edtPassword2.FillColor = System.Drawing.Color.White;
+            this.edtPassword2.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.edtPassword2.Location = new System.Drawing.Point(12, 141);
+            this.edtPassword2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.edtPassword2.Maximum = 2147483647D;
+            this.edtPassword2.Minimum = -2147483648D;
+            this.edtPassword2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.edtPassword2.Name = "edtPassword2";
+            this.edtPassword2.Padding = new System.Windows.Forms.Padding(5);
+            this.edtPassword2.PasswordChar = '*';
+            this.edtPassword2.Size = new System.Drawing.Size(182, 29);
+            this.edtPassword2.Symbol = 61475;
+            this.edtPassword2.SymbolSize = 22;
+            this.edtPassword2.TabIndex = 2;
+            this.edtPassword2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.edtPassword2.Watermark = "请确认密码";
             // 
-            // uiSymbolButton1
+            // btnRegister
             // 
-            this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton1.FillColor = System.Drawing.Color.ForestGreen;
-            this.uiSymbolButton1.FillHoverColor = System.Drawing.Color.Green;
-            this.uiSymbolButton1.FillPressColor = System.Drawing.Color.Green;
-            this.uiSymbolButton1.FillSelectedColor = System.Drawing.Color.Green;
-            this.uiSymbolButton1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiSymbolButton1.Location = new System.Drawing.Point(13, 186);
-            this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton1.Name = "uiSymbolButton1";
-            this.uiSymbolButton1.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.uiSymbolButton1.RectColor = System.Drawing.Color.ForestGreen;
-            this.uiSymbolButton1.RectHoverColor = System.Drawing.Color.ForestGreen;
-            this.uiSymbolButton1.RectPressColor = System.Drawing.Color.ForestGreen;
-            this.uiSymbolButton1.RectSelectedColor = System.Drawing.Color.DarkGreen;
-            this.uiSymbolButton1.Size = new System.Drawing.Size(86, 29);
-            this.uiSymbolButton1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiSymbolButton1.StyleCustomMode = true;
-            this.uiSymbolButton1.Symbol = 62108;
-            this.uiSymbolButton1.TabIndex = 4;
-            this.uiSymbolButton1.Text = "注册";
-            this.uiSymbolButton1.TipsColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegister.FillColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.FillHoverColor = System.Drawing.Color.Green;
+            this.btnRegister.FillPressColor = System.Drawing.Color.Green;
+            this.btnRegister.FillSelectedColor = System.Drawing.Color.Green;
+            this.btnRegister.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.btnRegister.Location = new System.Drawing.Point(13, 186);
+            this.btnRegister.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
+            this.btnRegister.RectColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.RectHoverColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.RectPressColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.RectSelectedColor = System.Drawing.Color.DarkGreen;
+            this.btnRegister.Size = new System.Drawing.Size(86, 29);
+            this.btnRegister.Style = Sunny.UI.UIStyle.Custom;
+            this.btnRegister.StyleCustomMode = true;
+            this.btnRegister.Symbol = 62108;
+            this.btnRegister.TabIndex = 4;
+            this.btnRegister.Text = "注册";
+            this.btnRegister.TipsColor = System.Drawing.Color.ForestGreen;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnCancel
             // 
@@ -233,8 +234,8 @@ namespace Hangxing
         public System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label label1;
         public Sunny.UI.UIPanel uiPanel1;
-        public Sunny.UI.UITextBox uiTextBox1;
-        public Sunny.UI.UISymbolButton uiSymbolButton1;
+        public Sunny.UI.UITextBox edtPassword2;
+        public Sunny.UI.UISymbolButton btnRegister;
         public Sunny.UI.UISymbolButton btnCancel;
         public Sunny.UI.UITextBox edtPassword;
         public Sunny.UI.UITextBox edtUser;

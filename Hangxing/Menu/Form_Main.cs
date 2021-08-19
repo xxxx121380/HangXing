@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
+using System.Web.UI.WebControls.WebParts;
 using System.Windows.Forms;
+using Common.Utility;
 using Hangxing.View;
 using Sunny.UI;
 
@@ -8,10 +12,59 @@ namespace Hangxing
 {
     public partial class Form_Main : UIForm
     {
+        public static Form_Main form_main;
         public Form_Main()
         {
             InitializeComponent();
             CreateTreeNode();
+            form_main = this;
+            Initial();
+        }
+ 
+        /// <summary>
+        /// 窗口初始化
+        /// </summary>
+        public void Initial()
+        {
+            ShowInfo("程序初始化中.......");
+            int count = -1;
+            try
+            {
+                string countsql = "select count(*) from Article";
+                SqlConnection con = new SqlConnection(SqlHelper.connectionString);
+                SqlCommand cmd = new SqlCommand(countsql, con);
+                con.Open();
+                count = Convert.ToInt16(cmd.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (count >= 0)
+                {
+                    ShowInfo("数据库连接成功!");
+                    ShowInfo("本地数据库共有" + count + "篇文章!");
+                }
+                else
+                {
+                    ShowInfo("数据库连接失败!,请检查连接字符串!");
+                }
+            }
+        }
+        /// <summary>
+        /// 打印日志
+        /// </summary>
+        /// <param name="txtInfo"></param>
+        /// <param name="Info"></param>
+        public static void ShowInfo(string Info)
+        {
+            form_main.txtInfo.AppendText(DateTime.Now.ToString()+":"+Info);
+            form_main.txtInfo.AppendText(Environment.NewLine);
+            form_main.txtInfo.ScrollToCaret();
+            SystemLog.WriteLogLine(Info, SystemLog.pathlog);
         }
         /// <summary>
         /// 创建左侧菜单节点
@@ -19,17 +72,11 @@ namespace Hangxing
         private void CreateTreeNode()
         {
             int pageIndex = 1000;
-            TreeNode parent1 = Aside.CreateNode("控制台", 22, pageIndex);
-            TreeNode parent2 = Aside.CreateNode("数据库维护", 22, pageIndex);
+            TreeNode parent1 = Aside.CreateNode("首页", 22, pageIndex);
             TreeNode parent3 = Aside.CreateNode("用户信息", 22, pageIndex);
-            TreeNode parent4 = Aside.CreateNode("微信文章管理", 22, pageIndex);
-            Aside.CreateChildNode(parent4, "微信文章1", ++pageIndex);
-            Aside.CreateChildNode(parent4, "微信文章2", ++pageIndex);
-            Aside.CreateChildNode(parent4, "微信文章3", ++pageIndex);
+            TreeNode parent4 = Aside.CreateNode("文章管理", 22, pageIndex);
             TreeNode parent5 = Aside.CreateNode("视频管理", 22, pageIndex);
-            Aside.CreateChildNode(parent5, "视频文章1", ++pageIndex);
-            Aside.CreateChildNode(parent5, "视频文章2", ++pageIndex);
-            Aside.CreateChildNode(parent5, "视频文章3", ++pageIndex);
+            //Aside.CreateChildNode(parent5, "视频1", ++pageIndex);
             Aside.SelectFirst();
         }
         /// <summary>
@@ -54,6 +101,7 @@ namespace Hangxing
             frm.Show();
             return frm;
         }
+
         private void Aside_MenuItemClick_1(TreeNode node, NavMenuItem item, int pageIndex)
         {
             if (item != null)
@@ -70,37 +118,28 @@ namespace Hangxing
 
                 switch (menuText)
                 {
-                    case "控制台":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_ControlTab));
-                        break;
-                    case "数据库维护":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_DataBase));
+                    case "首页":
+                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Front));
                         break;
                     case "用户信息":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_UserInformation));
+                        LoadMdiForm(MainTabControl, menuText, typeof(Form_User));
                         break;
-                    case "微信文章1":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Wechat1));
+                    case "文章管理":
+                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Article));
                         break;
-                    case "微信文章2":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Wechat2));
-                        break;
-                    case "微信文章3":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Wechat3));
-                        break;
-                    case "视频文章1":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Video1));
-                        break;
-                    case "视频文章2":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Video2));
-                        break;
-                    case "视频文章3":
-                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Video3));
-                        break;
-                    default:
+                    case "视频管理":
+                        LoadMdiForm(MainTabControl, menuText, typeof(Form_Video));
                         break;
                 }
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Form_Login fl = new Form_Login();
+            this.Visible = false;
+            fl.Show();
+        }
+
     }
 }
